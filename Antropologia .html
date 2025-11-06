@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Antropologia Reformada Pós-Queda — Apresentação Interativa</title>
+  <!-- Script para ícones Lucide -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --muted:#9aa7b2;
+      --accent:#f7b267;
+      --accent-2:#ff6b6b;
+      --glass: rgba(255,255,255,0.04);
+      --glass-2: rgba(255,255,255,0.02);
+      --radius:18px;
+      color-scheme: dark;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    *{box-sizing:border-box}
+    html{
+      scroll-behavior: smooth;
+    }
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(247,178,103,0.06), transparent),
+                  radial-gradient(900px 400px at 90% 90%, rgba(255,107,107,0.03), transparent),
+                  var(--bg);
+      color: #e6eef6;
+      overflow-x:hidden;
+    }
+
+    /* --- Intro / Animação da Maçã --- */
+    .intro-wrap{
+      position:fixed;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background: linear-gradient(180deg, rgba(2,6,23,0.98), rgba(2,6,23,0.92));
+      z-index:9999;
+      transition: opacity .6s ease, transform .6s ease;
+      opacity: 1;
+      transform: scale(1);
+    }
+    /* Classe para esconder a introdução */
+    .intro-wrap.hidden{
+      opacity: 0;
+      transform: scale(0.95);
+      pointer-events: none;
+    }
+    
+    .intro-card{
+      width:360px;
+      max-width:90%;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:20px;
+      padding:28px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+      text-align:center;
+      backdrop-filter:blur(6px);
+      border: 1px solid rgba(255,255,255,0.03);
+    }
+    .apple{
+      width:160px;
+      margin:0 auto 18px auto;
+      cursor:pointer;
+      user-select:none;
+      touch-action:manipulation;
+      /* Animação de 'mordida' */
+      transition: transform .3s cubic-bezier(.2,.9,.3,1);
+    }
+    .apple:active {
+      transform: scale(0.95);
+    }
+    
+    .apple svg{display:block;width:100%}
+    .btn-eat{
+      display:inline-flex;
+      align-items:center;
+      justify-content: center;
+      gap:10px;
+      padding:12px 20px;
+      border-radius:12px;
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      color:#071123;
+      font-weight:700;
+      border:none;
+      cursor:pointer;
+      box-shadow: 0 6px 18px rgba(255,107,107,0.14);
+      transform:translateY(0);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn-eat:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(255,107,107,0.2);
+    }
+    .btn-eat i {
+      width: 18px;
+      height: 18px;
+    }
+    
+    .small-muted{color:var(--muted); font-size:13px; margin-top:10px}
+
+    /* --- Site Principal --- */
+    .site{
+      opacity:0;
+      transform:scale(0.98);
+      transition:opacity .7s ease .12s, transform .7s ease .12s;
+      padding:48px 6vw;
+      min-height:100vh;
+    }
+    .site.revealed{
+      opacity:1; 
+      transform:scale(1);
+    }
+
+    header{
+      display:flex;
+      flex-wrap: wrap;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:26px;
+    }
+    .brand{
+      display:flex;
+      gap:14px;
+      align-items:center;
+    }
+    .logo{
+      width:56px;
+      height:56px;
+      border-radius:12px;
+      background:linear-gradient(180deg,var(--accent),var(--accent-2));
+      display:grid; place-items:center;
+      color:#071123;
+      box-shadow: 0 8px 26px rgba(247,178,103,0.09);
+    }
+    .logo i {
+      width: 28px;
+      height: 28px;
+      stroke-width: 2.5;
+    }
+    h1{margin:0;font-size:20px;letter-spacing:-0.2px}
+    .nav{
+      display:flex;
+      gap:6px;
+      align-items:center;
+      flex-wrap: wrap;
+    }
+    .nav a{
+      color:var(--muted); 
+      text-decoration:none; 
+      font-weight:600; 
+      font-size:14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      border-radius: 10px;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+    .nav a:hover {
+      background-color: var(--glass);
+      color: #fff;
+    }
+    .nav a i {
+      width: 16px;
+      height: 16px;
+      stroke-width: 2.5;
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:32px;
+      align-items:start;
+    }
+    .card{
+      background: linear-gradient(180deg,var(--card), rgba(255,255,255,0.01));
+      border-radius:var(--radius);
+      padding:24px;
+      box-shadow: 0 6px 30px rgba(3,7,18,0.6);
+      border:1px solid rgba(255,255,255,0.03);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 40px rgba(3,7,18,0.8);
+    }
+    
+    .intro-text h2{margin:0 0 6px 0}
+    .muted{color:var(--muted)}
+    
+    .toc{display:flex;flex-direction:column;gap:8px;margin-top:16px}
+    .toc a{
+      display:flex;align-items:center;gap:10px;
+      padding:10px 12px;border-radius:10px;
+      text-decoration:none;color:inherit;
+      border:1px solid rgba(255,255,255,0.02);
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+    .toc a:hover {
+      background-color: var(--glass);
+      transform: translateX(4px);
+    }
+    .toc a i {
+      color: var(--accent);
+      width: 18px;
+      height: 18px;
+    }
+
+    /* --- Seções de Conteúdo --- */
+    main{margin-top:28px; display:grid; grid-template-columns: 2fr 1fr; gap:28px; align-items:start;}
+    article{display:flex;flex-direction:column;gap:18px}
+    section h3{
+      margin:0 0 10px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--accent-2);
+    }
+    section h3 i {
+      width: 22px;
+      height: 22px;
+    }
+    
+    p{margin:0;color:#dce9f2;line-height:1.6}
+    ul, ol {
+      margin:8px 0 0 18px;
+      padding-left: 18px;
+      color:#dce9f2
+    }
+    li {
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+    
+    .quote{
+      padding:16px;border-radius:12px;background:var(--glass);
+      border-left: 4px solid var(--accent);
+      font-style:italic;color:var(--muted);
+      margin-top: 10px;
+    }
+    .sidebar .card{position:sticky;top:26px}
+
+    /* Badges de Ícone */
+    .icons{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:12px;background:var(--glass-2);
+      border:1px solid rgba(255,255,255,0.02);color:var(--muted);font-weight:600
+    }
+    .badge i {
+      width: 16px;
+      height: 16px;
+      color: var(--accent);
+    }
+
+    /* --- Seção de Flashcards (Nova) --- */
+    .flashcard-deck {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .flashcard {
+      perspective: 1000px;
+      border-radius: 12px;
+      cursor: pointer;
+      min-height: 180px;
+      user-select: none;
+    }
+    .flashcard-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 180px;
+      transition: transform 0.7s;
+      transform-style: preserve-3d;
+    }
+    .flashcard.is-flipped .flashcard-inner {
+      transform: rotateY(180deg);
+    }
+    .flashcard-front,
+    .flashcard-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 12px;
+    }
+    .flashcard-front {
+      background: var(--glass-2);
+      font-weight: 600;
+      font-size: 18px;
+      color: #fff;
+    }
+    .flashcard-front span {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 8px;
+      font-weight: 400;
+    }
+    .flashcard-back {
+      background: var(--card);
+      transform: rotateY(180deg);
+      font-size: 14px;
+      color: #dce9f2;
+    }
+    .flashcard-back strong {
+      color: var(--accent);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    /* --- Animação de Scroll --- */
+    .anim-card {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .anim-card.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* --- Botão Voltar ao Topo --- */
+    #toTopBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(90deg,var(--accent),var(--accent-2));
+      color: #071123;
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      z-index: 1000;
+    }
+    #toTopBtn.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    #toTopBtn i {
+      width: 22px;
+      height: 22px;
+    }
+
+    footer{text-align:center;color:var(--muted);margin-top:36px;padding-bottom:80px;font-size:13px}
+    .hidden{display:none}
+
+    /* --- Responsividade --- */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr}
+      main{grid-template-columns:1fr}
+      .intro-card{width:300px}
+    }
+    @media (max-width:700px){
+      .nav { justify-content: center; }
+      .brand { flex-direction: column; text-align: center; gap: 8px; margin-bottom: 16px; }
+      header { justify-content: center; }
+      .site { padding: 32px 4vw; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Intro com maçã -->
+  <div class="intro-wrap" id="intro">
+    <div class="intro-card" role="dialog" aria-label="Intro interativo">
+      <div class="apple" id="apple" title="Clique para 'morder'">
+        <!-- SVG da Maçã Inteira -->
+        <svg viewBox="0 0 256 256" id="appleWhole" xmlns="http://www.w3.org/2000/svg" aria-hidden="false">
+          <defs>
+            <linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#ff8a66"/><stop offset="1" stop-color="#ff3b4a"/></linearGradient>
+            <linearGradient id="g2" x1="0" x2="1"><stop offset="0" stop-color="#44d27f"/><stop offset="1" stop-color="#1ea34b"/></linearGradient>
+          </defs>
+          <g>
+            <path d="M128 22c18 0 34 9 44 24 9 13 13 29 11 45-3 22-18 40-35 54-20 16-36 27-36 27s-15-11-36-27c-17-14-32-32-35-54-2-16 2-32 11-45 10-15 26-24 44-24z" fill="url(#g1)"/>
+            <path d="M118 16c5-8 16-12 25-9 5 2 7 6 5 12-3 9-8 17-13 24-10 14-19 25-19 25s-5-8-11-18c-6-11-10-23-6-33 1-3 3-6 9-11z" fill="url(#g2)" opacity=".95"/>
+            <path d="M160 14c6 0 18-6 22 2 4 8-6 16-16 18-6 1-13-1-16-6 6-6 6-14 10-14z" fill="#2b6b3a" opacity=".9"/>
+            <circle cx="95" cy="80" r="6" fill="rgba(255,255,255,0.18)"/>
+          </g>
+        </svg>
+
+        <!-- SVG da Maçã Mordida -->
+        <svg viewBox="0 0 256 256" id="appleBitten" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="hidden">
+          <defs>
+            <linearGradient id="g1b" x1="0" x2="1"><stop offset="0" stop-color="#ff8a66"/><stop offset="1" stop-color="#ff3b4a"/></linearGradient>
+            <linearGradient id="g3b" x1="0" x2="1"><stop offset="0" stop-color="#fdf4e3"/><stop offset="1" stop-color="#fff9f0"/></linearGradient>
+          </defs>
+          <g>
+            <path d="M128 22c18 0 34 9 44 24 9 13 13 29 11 45-3 22-18 40-35 54-20 16-36 27-36 27s-15-11-36-27c-17-14-32-32-35-54-2-16 2-32 11-45 10-15 26-24 44-24z" fill="url(#g1b)"/>
+            <!-- Mordida -->
+            <path d="M204 104c-12 1-22-6-29-15-8-10-10-23-6-34 5-12 16-20 29-20 8 0 15 3 20 8 10 10 10 25 0 35-7 8-16 13-24 16z" fill="url(#g3b)"/>
+            <path d="M206 100c-10 1-18-5-24-12-6-9-8-19-4-28 4-10 13-16 24-16 6 0 12 2 16 6 8 8 8 20 0 28-6 7-13 10-20 12z" fill="var(--bg)" opacity="0.6"/>
+            <!-- Folha e talo (opcional, removido da mordida para simplicidade) -->
+            <circle cx="95" cy="80" r="6" fill="rgba(255,255,255,0.18)"/>
+          </g>
+        </svg>
+      </div>
+
+      <div>
+        <h3 style="margin:0 0 8px 0">Um Gesto. Um Mundo.</h3>
+        <p class="small-muted">Clique para explorar o conteúdo sobre a Antropologia Reformada Pós-Queda.</p>
+        <div style="margin-top:14px">
+          <button class="btn-eat" id="eatBtn" aria-label="Iniciar apresentação">
+            <i data-lucide="play-circle"></i> Iniciar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Site Principal -->
+  <div class="site" id="site" aria-hidden="true">
+    <header>
+      <div class="brand">
+        <div class="logo">
+          <i data-lucide="book-user"></i>
+        </div>
+        <div>
+          <h1>Antropologia Reformada Pós-Queda</h1>
+          <div class="muted">Uma Apresentação Interativa</div>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Navegação">
+        <a href="#imago"><i data-lucide="image"></i>Imago Dei</a>
+        <a href="#depr"><i data-lucide="shield-alert"></i>Depravação</a>
+        <a href="#pecado"><i data-lucide="gavel"></i>Pecado Original</a>
+        <a href="#alienacao"><i data-lucide="link-2-off"></i>Alienação</a>
+        <a href="#flashcards"><i data-lucide="layers"></i>Flashcards</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="card intro-text">
+        <h2>Resumo Rápido</h2>
+        <p class="muted">A antropologia pós-queda descreve o homem como portador da Imago Dei, agora deformada; herdeiro de culpa imputada e de corrupção herdada; e vivendo em alienação quádrupla — tudo com implicações diretas para a soteriologia.</p>
+
+        <div class="icons" aria-hidden="true">
+          <div class="badge"><i data-lucide="user-check"></i>Histórico (Adão real)</div>
+          <div class="badge"><i data-lucide="scale"></i>Culpa Imputada</div>
+          <div class="badge"><i data-lucide="brain"></i>Efeitos Noéticos</div>
+          <div class="badge"><i data-lucide="users"></i>Representação Federal</div>
+        </div>
+
+        <div class="toc">
+          <a href="#imago"><i data-lucide="chevron-right"></i> Imago Dei — Amplo vs Estrito</a>
+          <a href="#pacto"><i data-lucide="chevron-right"></i> Pacto de Obras e Representação</a>
+          <a href="#depr"><i data-lucide="chevron-right"></i> Depravação Total &amp; Escravidão da Vontade</a>
+          <a href="#alienacao"><i data-lucide="chevron-right"></i> Alienação Quádrupla</a>
+        </div>
+      </div>
+
+      <aside class="card">
+        <h3>Navegação Rápida</h3>
+        <p class="muted">Use os links para ir direto às seções. Esta apresentação contém sínteses e flashcards interativos para revisão.</p>
+        <div class="icons">
+          <a class="badge" href="#flashcards"><i data-lucide="layers"></i>Revisar Flashcards</a>
+          <a class="badge" href="#conclusao"><i data-lucide="check-check"></i>Ver Conclusão</a>
+        </div>
+      </aside>
+    </section>
+
+    <main>
+      <article>
+        <section id="imago" class="card anim-card" aria-labelledby="imagoTitle">
+          <h3><i data-lucide="image"></i>Imago Dei: Sentido Amplo e Estrito</h3>
+          <p>Na perspectiva reformada, a Imago Dei possui duas noções: o <strong>sentido amplo</strong> (estrutural — razão, vontade, memória, relacionalidade e mandato cultural) e o <strong>sentido estrito</strong> (funcional — justiça original, santidade e conhecimento de Deus). O sentido estrito foi perdido na Queda; o sentido amplo persiste, embora deformado.</p>
+
+          <div class="quote">"O que foi perdido: a Imago Dei em seu sentido estrito — a *justitia originalis*. O que persiste: a Imago em seu sentido amplo, terrivelmente afetada."</div>
+
+          <h4 style="margin-top:12px; margin-bottom: 8px;">Implicações</h4>
+          <ul>
+            <li>Persistência da dignidade humana (razão, responsabilidade), mas com corrupção profunda.</li>
+            <li>*Justitia originalis* sendo parte da constituição humana na visão reformada — logo sua perda corrompe a própria natureza.</li>
+          </ul>
+        </section>
+
+        <section id="pacto" class="card anim-card" aria-labelledby="pactoTitle">
+          <h3><i data-lucide="file-text"></i>Pacto de Obras e Representação Federal</h3>
+          <p>Adão atua como cabeça federal: o <strong>Pacto de Obras</strong> permite que sua obediência/rebelião tenha efeitos para toda a posteridade. A queda histórica de Adão é teologicamente necessária para a estrutura da soteriologia (paralelo Adão/Cristo em Romanos 5).</p>
+
+          <div class="muted" style="font-size:13px; margin-top: 12px;">Tabela (sintética)</div>
+          <div style="background:var(--glass);padding:10px;border-radius:10px;margin-top:8px">
+            <strong>Pré-Queda:</strong> Comunhão com Deus; Imago íntegra; *posse non peccare*.<br/>
+            <strong>Pós-Queda:</strong> Alienação, morte espiritual, culpa imputada e corrupção herdada.
+          </div>
+        </section>
+        
+        <!-- Seção de Flashcards (Nova) -->
+        <section id="flashcards" class="card anim-card" aria-labelledby="flashcardsTitle">
+          <h3><i data-lucide="layers"></i>Flashcards Interativos</h3>
+          <p class="muted">Clique nos cards para virar e ver a definição. Baseado no conteúdo do PDF.</p>
+          
+          <div class="flashcard-deck">
+            <div class="flashcard" role="button" tabindex="0" aria-label="Virar card: Imago Dei (Amplo)">
+              <div class="flashcard-inner">
+                <div class="flashcard-front">Imago Dei (Amplo) <span>(Clique para virar)</span></div>
+                <div class="flashcard-back"><strong>Definição:</strong> O aspecto estrutural. As faculdades inatas: razão, vontade, memória, relacionalidade. Persiste após a Queda, mas deformada.</div>
+              </div>
+            </div>
+            <div class="flashcard" role="button" tabindex="0" aria-label="Virar card: Imago Dei (Estrito)">
+              <div class="flashcard-inner">
+                <div class="flashcard-front">Imago Dei (Estrito) <span>(Clique para virar)</span></div>
+                <div class="flashcard-back"><strong>Definição:</strong> O aspecto funcional/moral. A *justitia originalis* (justiça, santidade, conhecimento de Deus). Foi perdida na Queda.</div>
+              </div>
+            </div>
+            <div class="flashcard" role="button" tabindex="0" aria-label="Virar card: Justitia Originalis">
+              <div class="flashcard-inner">
+                <div class="flashcard-front">Justitia Originalis <span>(Clique para virar)</span></div>
+                <div class="flashcard-back"><strong>Definição:</strong> "Justiça Original". O estado de saúde moral e harmonia com Deus antes da Queda. Era parte integral da natureza humana.</div>
+              </div>
+            </div>
+            <div class="flashcard" role="button" tabindex="0" aria-label="Virar card: Culpa Imputada">
+              <div class="flashcard-inner">
+                <div class="flashcard-front">Culpa Imputada <span>(Clique para virar)</span></div>
+                <div class="flashcard-back"><strong>Definição:</strong> O aspecto legal do Pecado Original. O status de condenação herdado de Adão como nosso representante federal.</div>
+              </div>
+            </div>
+            <div class="flashcard" role="button" tabindex="0" aria-label="Virar card: Alienação Quádrupla">
+              <div class="flashcard-inner">
+                <div class="flashcard-front">Alienação Quádrupla <span>(Clique para virar)</span></div>
+                <div class="flashcard-back"><strong>Definição:</strong> A consequência existencial da Queda: alienação de (1) Deus, (2) Si mesmo, (3) Outros, e (4) Criação.</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="pecado" class="card anim-card" aria-labelledby="pecadoTitle">
+          <h3><i data-lucide="gavel"></i>Pecado Original: Culpa Imputada &amp; Corrupção Herdada</h3>
+          <p>A doutrina descreve a transmissão do pecado em dois polos: (1) <strong>culpa imputada</strong> — status legal de condenação por representação federal; (2) <strong>corrupção herdada</strong> — a depravação moral passada biologicamente/ontologicamente. A salvação precisa atuar em ambos: justificação para a culpa, regeneração para a corrupção.</p>
+
+          <div class="quote">"A salvação deve ser dupla: Justificação (problema legal) e Regeneração/Santificação (problema moral)."</div>
+        </section>
+
+        <section id="depr" class="card anim-card" aria-labelledby="deprTitle">
+          <h3><i data-lucide="shield-alert"></i>Depravação Total e a Escravidão da Vontade</h3>
+          <p>Na leitura reformada, <strong>total</strong> refere-se à extensão da corrupção (todas as faculdades afetadas), não à intensidade absoluta. A vontade humana é descrita como <em>escravizada</em> ao pecado: o homem ainda escolhe livremente, mas sua vontade está inclinada sempre ao pecado (compatibilismo). Isso fundamenta a necessidade da graça soberana.</p>
+
+          <div class="icons">
+            <div class="badge"><i data-lucide="brain-circuit"></i>Intelecto obscurecido</div>
+            <div class="badge"><i data-lucide="heart-off"></i>Afeições alienadas</div>
+            <div class="badge"><i data-lucide="lock"></i>Vontade escravizada</div>
+          </div>
+
+          <p style="margin-top:10px" class="muted">Observação: "Incapacidade total" implica incapacidade espiritual sem a intervenção regeneradora do Espírito.</p>
+        </section>
+
+        <section id="alienacao" class="card anim-card" aria-labelledby="alienTitle">
+          <h3><i data-lucide="link-2-off"></i>Alienação Quádrupla — Existência pós-queda</h3>
+          <p>A Queda introduz quatro dimensões de alienação: (1) de Deus (morte espiritual); (2) de si mesmo (consciência acusadora, vergonha); (3) dos outros (conflito e dominação); (4) da criação (maldição da terra, morte física).</p>
+
+          <ul>
+            <li><strong>Alienação de Deus:</strong> ruptura da comunhão imediata do Éden — morte espiritual.</li>
+            <li><strong>Alienação de si:</strong> vergonha e culpa; desordem interior.</li>
+            <li><strong>Alienação dos outros:</strong> relações marcadas por conflito e dominação.</li>
+            <li><strong>Alienação da criação:</strong> trabalho com fadiga, decadência e morte física.</li>
+          </ul>
+        </section>
+
+        <section id="conclusao" class="card anim-card" aria-labelledby="conclTitle">
+          <h3><i data-lucide="check-check"></i>Síntese &amp; Implicações Teológicas</h3>
+          <p>A condição pós-queda é trágica: a imagem persiste (dignidade), mas está deformada (miséria); há uma dupla condenação legal e moral. A necessidade da graça soberana (monergismo) surge logicamente dessa condição: se o homem não pode iniciar seu próprio movimento para a salvação, a salvação deve decorrer inteiramente da ação divina.</p>
+
+          <div class="quote">"O homem pós-queda é ao mesmo tempo um rei em ruínas: dignidade (Imago) e miséria (depravação)."</div>
+        </section>
+      </article>
+
+      <aside class="sidebar">
+        <div class="card anim-card">
+          <h4>Tabelas &amp; Resumos</h4>
+          <div style="margin-top:8px">
+            <strong>Tabela — Pré vs Pós</strong>
+            <ul style="margin-top: 8px;">
+              <li><strong>Relação com Deus:</strong> Comunhão perfeita → Alienação / morte espiritual.</li>
+              <li><strong>Imago (Estrita):</strong> Verdadeiro conhecimento/justiça → perdida.</li>
+              <li><strong>Imago (Ampla):</strong> Faculdades persistem → deformadas.</li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <div class="muted">Apresentação Interativa de Antropologia Pós-Queda.</div>
+    </footer>
+
+    <button id="toTopBtn" title="Voltar ao topo">
+      <i data-lucide="arrow-up"></i>
+    </button>
+  </div>
+
+  <script>
+    // --- Lógica da Intro ---
+    const eatBtn = document.getElementById('eatBtn');
+    const appleWhole = document.getElementById('appleWhole');
+    const appleBitten = document.getElementById('appleBitten');
+    const appleWrap = document.getElementById('apple');
+    const intro = document.getElementById('intro');
+    const site = document.getElementById('site');
+
+    function revealSite(){
+      // 1. Troca o SVG da maçã
+      appleWhole.classList.add('hidden');
+      appleBitten.classList.remove('hidden');
+      appleBitten.setAttribute('aria-hidden', 'false');
+      appleWhole.setAttribute('aria-hidden', 'true');
+
+      // 2. Animação de "mordida"
+      appleWrap.style.transform = 'scale(0.95)';
+      setTimeout(() => { 
+        appleWrap.style.transform = 'scale(1)';
+      }, 150);
+
+      // 3. Esconde a intro e revela o site
+      setTimeout(() => {
+        intro.classList.add('hidden'); // Usa a classe CSS para animar a saída
+        site.classList.add('revealed');
+        site.setAttribute('aria-hidden','false');
+      }, 400); // Dá tempo para a "mordida"
+    }
+
+    eatBtn.addEventListener('click', revealSite);
+    appleWrap.addEventListener('click', revealSite);
+    
+    eatBtn.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter' || e.key === ' ') revealSite();
+    });
+
+    // --- Lógica dos Flashcards ---
+    const flashcards = document.querySelectorAll('.flashcard');
+    flashcards.forEach(card => {
+      
+      const flipCard = () => {
+        card.classList.toggle('is-flipped');
+      };
+      
+      card.addEventListener('click', flipCard);
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          flipCard();
+        }
+      });
+    });
+
+    // --- Lógica de Animação de Scroll (IntersectionObserver) ---
+    const animatedCards = document.querySelectorAll('.anim-card');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target); // Não precisa observar mais
+        }
+      });
+    }, {
+      rootMargin: '0px',
+      threshold: 0.1 // Ativa quando 10% do card está visível
+    });
+
+    animatedCards.forEach(card => {
+      observer.observe(card);
+    });
+
+    // --- Lógica do Botão "Voltar ao Topo" ---
+    const toTopBtn = document.getElementById('toTopBtn');
+    
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        toTopBtn.classList.add('show');
+      } else {
+        toTopBtn.classList.remove('show');
+      }
+    });
+
+    toTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // --- Inicializa os Ícones do Lucide ---
+    lucide.createIcons();
+  </script>
+</body>
+</html>

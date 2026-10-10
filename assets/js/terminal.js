@@ -3,7 +3,7 @@
  * Histórico (↑/↓), autocompletar (Tab), Ctrl+L para limpar, `ask` com recuperação
  * lexical (BM25) ou semântica (embeddings) quando a camada de IA estiver ativa.
  */
-import { auditCorpus, computeMatch, CANONICAL_KEYWORDS } from './ats-core.js';
+
 import { getCorpusText, getChunks, BM25 } from './corpus.js';
 import { semantic } from './semantic.js';
 
@@ -152,39 +152,6 @@ export function initTerminal({ onScrollTo } = {}) {
       },
     },
 
-    ats: {
-      desc: 'audita o dossiê contra o dicionário canônico',
-      run() {
-        const res = auditCorpus(getCorpusText());
-        const canon = res.filter((r) => r.origin === 'canonical');
-        const ok = canon.filter((r) => r.present).length;
-        const ai = res.filter((r) => r.origin === 'ai' && r.present).length;
-        print(`<span class="h">Auditoria ATS</span> <span class="d">· ${CANONICAL_KEYWORDS.length} termos canônicos</span>`);
-        print(`  cobertura canônica   <span class="${ok === canon.length ? 'ok' : 'w'}">${ok}/${canon.length} (${((ok / canon.length) * 100).toFixed(1)}%)</span>`);
-        print(`  extensão IA          <span class="ai">${ai}/${res.length - canon.length}</span>`);
-        const miss = res.filter((r) => !r.present).map((r) => r.term);
-        if (miss.length) print(`  ausentes             <span class="bad">${esc(miss.join(', '))}</span>`);
-        else print('  ausentes             <span class="ok">nenhum</span>');
-      },
-    },
-
-    match: {
-      args: '<texto da vaga>',
-      desc: 'calcula o Match Ratio de uma vaga',
-      run(args) {
-        const job = args.join(' ');
-        if (!job) {
-          text('uso: match <requisitos da vaga>  — ou cole a vaga completa no Auditor (§06)', 'd');
-          onScrollTo?.('job-input');
-          return;
-        }
-        const r = computeMatch(job, getCorpusText());
-        print(`<span class="h">Match Ratio</span>  <span class="${r.ratio >= 75 ? 'ok' : r.ratio >= 50 ? 'w' : 'bad'}">${r.ratio}%</span> <span class="d">(${r.identified.length}/${r.requirements.length} × 100 = ${r.base} + bônus ${r.bonus})</span>`);
-        if (r.identified.length) print(`  comprovados  <span class="ok">${esc(r.identified.join(', '))}</span>`);
-        if (r.missing.length) print(`  lacunas      <span class="bad">${esc(r.missing.join(', '))}</span>`);
-        if (!r.requirements.length) text('  nenhum requisito técnico reconhecido no texto', 'd');
-      },
-    },
 
     ask: {
       args: '<pergunta>',

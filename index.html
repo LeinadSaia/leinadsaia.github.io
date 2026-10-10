@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="pt-BR" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Daniel Saia — Analista de Sistemas Pleno · SRE · SysAdmin Linux</title>
+  <meta name="description" content="Dossiê técnico de Daniel Saia (@LeinadSaia): Site Reliability Engineering, administração de sistemas Linux, observabilidade, automação com Ansible/Terraform, IA aplicada a operações e auditor ATS interativo.">
+  <meta name="author" content="Daniel Saia">
+  <meta name="keywords" content="SRE, Site Reliability Engineering, SysAdmin, Linux, Analista de Sistemas, Ansible, Terraform, Prometheus, Grafana, PostgreSQL, Kubernetes, Docker, AIOps, LLMOps, MLOps, Ollama, vLLM">
+  <meta name="theme-color" content="#0d0e0c">
+  <link rel="canonical" href="https://leinadsaia.github.io/">
+
+  <meta property="og:type" content="profile">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Daniel Saia — SRE · SysAdmin · Analista de Sistemas">
+  <meta property="og:description" content="Confiabilidade de sistemas, infraestrutura Linux, observabilidade e IA aplicada a operações. Dossiê com auditor ATS e terminal interativo.">
+  <meta property="og:url" content="https://leinadsaia.github.io/">
+  <meta property="og:image" content="https://leinadsaia.github.io/assets/img/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <script>document.documentElement.classList.remove('no-js');</script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Daniel Saia",
+    "alternateName": "LeinadSaia",
+    "jobTitle": "Analista de Sistemas Pleno | Site Reliability Engineer (SRE) | SysAdmin Linux",
+    "email": "mailto:danielenescunha2@gmail.com",
+    "url": "https://leinadsaia.github.io/",
+    "sameAs": ["https://github.com/LeinadSaia"],
+    "address": { "@type": "PostalAddress", "addressCountry": "BR" },
+    "knowsAbout": ["Site Reliability Engineering", "Linux", "Observability", "Prometheus", "Grafana", "Ansible", "Terraform", "PostgreSQL", "Kubernetes", "Docker", "ITIL v4", "Disaster Recovery", "AIOps", "LLMOps", "MLOps"]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- ================================================================ TOPBAR -->
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="#topo" aria-label="Início">
+        <span class="brand-mark" aria-hidden="true">DS</span>
+        <span>leinadsaia<span class="dim">.github.io</span></span>
+      </a>
+      <nav class="nav" aria-label="Seções">
+        <ol>
+          <li><a href="#perfil"><i>01</i>Perfil</a></li>
+          <li><a href="#competencias"><i>02</i>Competências</a></li>
+          <li><a href="#impacto"><i>03</i>Impacto</a></li>
+          <li><a href="#ia"><i>04</i>IA</a></li>
+          <li><a href="#repositorios"><i>05</i>Repositórios</a></li>
+          <li><a href="#auditor"><i>06</i>Auditor ATS</a></li>
+          <li><a href="#terminal"><i>07</i>Terminal</a></li>
+          <li><a href="#arquitetura"><i>08</i>Exportar</a></li>
+        </ol>
+      </nav>
+      <div class="status" role="status">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span>operacional</span>
+        <time id="clock" datetime="">--:-- BRT</time>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <!-- ================================================================ HERO -->
+    <section class="hero" id="topo" aria-labelledby="nome">
+      <div class="wrap hero-grid">
+        <div class="reveal">
+          <div class="hero-meta-top">
+            <span class="eyebrow"><b>●</b> Dossiê técnico · ATS-ready</span>
+            <span class="eyebrow">Brasil · Remoto / Híbrido / Presencial</span>
+          </div>
+          <h1 id="nome">Daniel<br>Saia<span class="stop">.</span></h1>
+          <ul class="roles" aria-label="Cargos">
+            <li>Analista de Sistemas Pleno</li>
+            <li>Site Reliability Engineer (SRE)</li>
+            <li>SysAdmin Linux</li>
+          </ul>
+          <p class="lede"><strong>Foco de Atuação:</strong> Confiabilidade de Sistemas, Engenharia de Infraestrutura Linux, Automação de Operações (No-Ops/Toil Reduction), Análise Sistêmica e Observabilidade Distribuída.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" id="cta-pdf" href="cv-daniel-saia-sre.pdf" download>
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 2v8m0 0 3-3m-3 3L5 7M3 13h10"/></svg>
+              Baixar CV (PDF)
+            </a>
+            <a class="btn" id="cta-plain" href="resume-plain.txt">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 2h5l3 3v9H4zM9 2v3h3M6 8h4M6 10.5h4"/></svg>
+              Texto puro (Gupy · Workday)
+            </a>
+            <a class="btn" id="cta-terminal" href="#terminal">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m3 5 3 3-3 3M8 11h5"/></svg>
+              Abrir terminal <span class="k">/</span>
+            </a>
+          </div>
+          <dl class="facts">
+            <div><dt>GitHub</dt><dd><a href="https://github.com/LeinadSaia" rel="me noopener" target="_blank">@LeinadSaia</a></dd></div>
+            <div><dt>E-mail</dt><dd><a href="mailto:danielenescunha2@gmail.com">danielenescunha2@gmail.com</a></dd></div>
+            <div><dt>Formação</dt><dd>ADS (em andamento)</dd></div>
+            <div><dt>Base</dt><dd>Brasil · BRT</dd></div>
+          </dl>
+        </div>
+
+        <aside class="panel ticks reveal" aria-labelledby="painel-titulo">
+          <div class="panel-head">
+            <span class="eyebrow" id="painel-titulo">Painel de confiabilidade</span>
+            <span class="eyebrow">antes → depois</span>
+          </div>
+          <div class="panel-body">
+            <div class="metric">
+              <div class="metric-top"><span class="metric-label">Disponibilidade global (uptime)</span><span class="metric-delta">downtime −97,5%</span></div>
+              <div class="metric-vals"><span class="before">99,2%</span><span class="arrow">→</span><span class="after">99,98</span><span class="unit">%</span></div>
+              <div class="bar" aria-hidden="true"><span style="--w:100%"></span><span class="after" style="--w:2.5%"></span></div>
+            </div>
+            <div class="metric">
+              <div class="metric-top"><span class="metric-label">MTTD — Mean Time to Detect</span><span class="metric-delta">−92,9%</span></div>
+              <div class="metric-vals"><span class="before">42 min</span><span class="arrow">→</span><span class="after">3</span><span class="unit">min</span></div>
+              <div class="bar" aria-hidden="true"><span style="--w:100%"></span><span class="after" style="--w:7.1%"></span></div>
+            </div>
+            <div class="metric">
+              <div class="metric-top"><span class="metric-label">Latência p99 (PostgreSQL)</span><span class="metric-delta">−97,7%</span></div>
+              <div class="metric-vals"><span class="before">1.800 ms</span><span class="arrow">→</span><span class="after">42</span><span class="unit">ms</span></div>
+              <div class="bar" aria-hidden="true"><span style="--w:100%"></span><span class="after" style="--w:2.3%"></span></div>
+            </div>
+            <div class="metric">
+              <div class="metric-top"><span class="metric-label">Toil operacional</span><span class="metric-delta">−85% · 35 h/semana</span></div>
+              <div class="metric-vals"><span class="before">100%</span><span class="arrow">→</span><span class="after">15</span><span class="unit">%</span></div>
+              <div class="bar" aria-hidden="true"><span style="--w:100%"></span><span class="after" style="--w:15%"></span></div>
+            </div>
+          </div>
+          <div class="panel-foot">fonte: matriz STAR · seção 03</div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- corpus:start — conteúdo lido pelo auditor ATS, pelo matcher e pelo CI -->
+
+    <!-- ================================================================ 01 PERFIL -->
+    <section class="section" id="perfil" aria-labelledby="perfil-h" data-corpus data-label="Resumo profissional">
+      <div class="wrap">
+        <header class="sec-head reveal">
+          <span class="sec-num">§01</span>
+          <h2 id="perfil-h">Resumo profissional &amp; qualificações</h2>
+          <span class="sec-meta">perfil · formação</span>
+        </header>
+        <div class="profile-grid">
+          <p class="summary reveal">Profissional especializado em Engenharia de Confiabilidade de Sistemas (SRE), Administração de Sistemas Linux (SysAdmin) e Análise de Sistemas Corporativos. Ampla experiência na gestão e sustentação de infraestruturas críticas, com foco em alta disponibilidade, observabilidade profunda e erradicação de trabalho manual repetitivo (Toil Reduction) por meio de automação com Ansible, Bash, Python e Terraform. Histórico comprovado de elevação de SLAs/SLOs para 99,98%, tuning avançado de bancos de dados PostgreSQL e kernel Linux, e atuação como Incident Commander em operações de missão crítica. Forte domínio de governança e práticas ITIL v4, planejamento de continuidade de negócios (DRP) e hardening de segurança alinhado a CIS Benchmarks.</p>
+          <div class="reveal" data-label="Formação acadêmica &amp; certificações">
+            <h3 class="eyebrow" style="margin-bottom:14px">Formação acadêmica &amp; certificações</h3>
+            <ul class="stack-list">
+              <li data-n="01"><span><strong>Graduação em Análise e Desenvolvimento de Sistemas</strong> (Em andamento)</span></li>
+              <li data-n="02"><span>Conhecimentos aplicados equivalentes a certificações: <strong>LPIC-2 / RHCSA</strong> (Red Hat Certified System Administrator), <strong>SRE Foundation</strong>, <strong>ITIL v4</strong></span></li>
+              <li data-n="03"><span>Conhecimentos aplicados em projetos de sustentabilidade e gerenciamento: <strong>SchoolTag</strong></span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================ 02 COMPETÊNCIAS -->
+    <section class="section" id="competencias" aria-labelledby="comp-h" data-corpus>
+      <div class="wrap">
+        <header class="sec-head reveal">
+          <span class="sec-num">§02</span>
+          <h2 id="comp-h">Dossiê exaustivo de habilidades técnicas</h2>
+          <span class="sec-meta">2.1 → 2.6 · corpus ATS</span>
+        </header>
+
+        <div class="skills">
+          <div class="tablist reveal" role="tablist" aria-label="Domínios de competência" aria-orientation="vertical">
+            <button class="tab" role="tab" id="tab-21" aria-controls="panel-21" aria-selected="true"><span class="n">2.1</span><span class="label">SysAdmin &amp; Sistemas Operacionais</span><span class="c">03</span></button>
+            <button class="tab" role="tab" id="tab-22" aria-controls="panel-22" aria-selected="false" tabindex="-1"><span class="n">2.2</span><span class="label">SRE &amp; Observabilidade</span><span class="c">04</span></button>
+            <button class="tab" role="tab" id="tab-23" aria-controls="panel-23" aria-selected="false" tabindex="-1"><span class="n">2.3</span><span class="label">Análise de Sistemas &amp; Dados</span><span class="c">02</span></button>
+            <button class="tab" role="tab" id="tab-24" aria-controls="panel-24" aria-selected="false" tabindex="-1"><span class="n">2.4</span><span class="label">Redes &amp; Conectividade</span><span class="c">01</span></button>
+            <button class="tab" role="tab" id="tab-25" aria-controls="panel-25" aria-selected="false" tabindex="-1"><span class="n">2.5</span><span class="label">IaC, Containers &amp; CI/CD</span><span class="c">03</span></button>
+            <button class="tab" role="tab" id="tab-26" aria-controls="panel-26" aria-selected="false" tabindex="-1"><span class="n">2.6</span><span class="label">IA Aplicada a Operações<span class="tag-ai">IA</span></span><span class="c">05</span></button>
+          </div>
+
+          <div class="panels reveal">
+            <!-- 2.1 -->
+            <section class="tab-panel" id="panel-21" role="tabpanel" aria-labelledby="tab-21" tabindex="0" data-label="2.1 SysAdmin &amp; Engenharia de Sistemas Operacionais">
+              <h3>2.1 SysAdmin &amp; Engenharia de Sistemas Operacionais (Linux / Unix)</h3>
+              <div class="skill-group">
+                <h4>Administração de Kernel &amp; Runtimes Linux</h4>
+                <dl class="skill-list">
+                  <div><dt>Distribuições</dt><dd>Debian, Ubuntu Server, RHEL, Rocky Linux, AlmaLinux, Alpine Linux.</dd></div>
+                  <div><dt>Kernel Tuning &amp; Performance</dt><dd>Otimização de parâmetros do kernel via <code>/etc/sysctl.conf</code> (<code>fs.file-max</code>, <code>net.ipv4.tcp_max_syn_backlog</code>, <code>net.core.somaxconn</code>, <code>vm.swappiness</code>, <code>vm.dirty_ratio</code>).</dd></div>
+                  <div><dt>Systemd &amp; Gerenciamento de Serviços</dt><dd>Criação de Service Units customizadas, Target units, Timers (substituição robusta de cron jobs), isolamento via cgroups v2, limites de recursos (<code>LimitNOFILE</code>, <code>LimitNPROC</code>, <code>MemoryMax</code>).</dd></div>
+                  <div><dt>Diagnóstico e Troubleshooting de Baixo Nível</dt><dd>Investigação de processos e gargalos de I/O e CPU com <code>strace</code>, <code>lsof</code>, <code>tcpdump</code>, <code>vmstat</code>, <code>iostat</code>, <code>sar</code>, <code>mpstat</code>, <code>perf</code> e análise de dumps de memória.</dd></div>
+                </dl>
+              </div>
+              <div class="skill-group">
+                <h4>Armazenamento, Sistemas de Arquivos &amp; Volumes</h4>
+                <dl class="skill-list">
+                  <div><dt>LVM (Logical Volume Manager)</dt><dd>Criação e expansão dinâmica de Physical Volumes (PV), Volume Groups (VG) e Logical Volumes (LV); snapshots para contingência.</dd></div>
+                  <div><dt>Sistemas de Arquivos</dt><dd>Ext4, XFS, ZFS (Pools, Datasets, compressão ZSTD, snapshots atômicos), NFS, iSCSI.</dd></div>
+                  <div><dt>Estratégias de Backup &amp; Recuperação</dt><dd><code>rsync</code>, Restic, BorgBackup, políticas de retenção 3-2-1, testes automatizados de restore e validação de somas de verificação (SHA-256).</dd></div>
+                </dl>
+              </div>
+              <div class="skill-group">
+                <h4>Segurança Operacional &amp; Hardening de Servidores</h4>
+                <dl class="skill-list">
+                  <div><dt>Hardening Baseado em CIS Benchmarks</dt><dd>Desativação de módulos legados do kernel, montagem segura de partições (<code>nodev</code>, <code>nosuid</code>, <code>noexec</code>), SSH Hardening (desativação de autenticação por senha, portas não padrão, chaves Ed25519, 2FA/MFA via PAM).</dd></div>
+                  <div><dt>Controle de Acesso Mandatório (MAC)</dt><dd>Configuração e auditoria de perfis SELinux (Enforcing mode, contextos, políticas booleanas) e AppArmor.</dd></div>
+                  <div><dt>Segurança em Camada de Rede</dt><dd>Gerenciamento de firewalls com <code>iptables</code>, <code>nftables</code>, <code>ufw</code> e mitigação de brute-force com <code>fail2ban</code>.</dd></div>
+                </dl>
+              </div>
+            </section>
+
+            <!-- 2.2 -->
+            <section class="tab-panel" id="panel-22" role="tabpanel" aria-labelledby="tab-22" tabindex="0" data-label="2.2 Site Reliability Engineering &amp; Observabilidade">
+              <h3>2.2 Site Reliability Engineering (SRE) &amp; Observabilidade</h3>
+              <div class="skill-group">
+                <h4>Governança de Confiabilidade &amp; Métricas de Serviço</h4>
+                <dl class="skill-list">
+                  <div><dt>Engenharia de Confiabilidade</dt><dd>Formulação e monitoramento de SLIs (Service Level Indicators), SLOs (Service Level Objectives) e SLAs (Service Level Agreements).</dd></div>
+                  <div><dt>Error Budgets</dt><dd>Políticas de congelamento de deploys e alocação de sprints para estabilização de serviços com base em queima acelerada de orçamentos de erro.</dd></div>
+                  <div><dt>Toil Reduction</dt><dd>Identificação e erradicação de trabalho manual repetitivo por meio de pipelines autônomas e scripts de auto-recuperação (Self-healing).</dd></div>
+                </dl>
+              </div>
+              <div class="skill-group">
+                <h4>Telemetria, Métricas &amp; Alarmística</h4>
+                <dl class="skill-list">
+                  <div><dt>Prometheus Ecosystem</dt><dd>Arquitetura pull, escrita de exporters customizados (Node Exporter, Blackbox Exporter), métricas em PromQL avançado (taxas, quantis p95/p99, interpolação).</dd></div>
+                  <div><dt>Grafana</dt><dd>Design de dashboards corporativos de missão crítica com base nos 4 Sinais Dourados (<em>Latência, Tráfego, Erros e Saturação</em>) e no Método USE/RED.</dd></div>
+                  <div><dt>Alertmanager &amp; Gestão de Incidentes</dt><dd>Agrupamento de alertas, inibição de ruídos, políticas de escalonamento on-call e integração com PagerDuty, Opsgenie e webhooks (Slack/Teams).</dd></div>
+                </dl>
+              </div>
+              <div class="skill-group">
+                <h4>Logging Distribuído &amp; Distributed Tracing</h4>
+                <dl class="skill-list">
+                  <div><dt>Coleta e Centralização de Logs</dt><dd>ELK Stack (Elasticsearch, Logstash, Kibana), Grafana Loki com Promtail, Fluentd/Fluent Bit para agregação de logs com formatação JSON estruturada.</dd></div>
+                  <div><dt>Distributed Tracing</dt><dd>Instrumentação e telemetria com OpenTelemetry (OTel), Jaeger e correlação de trace IDs com span logs em microsserviços.</dd></div>
+                </dl>
+              </div>
+              <div class="skill-group">
+                <h4>Resiliência &amp; Gestão de Crise</h4>
+                <dl class="skill-list">
+                  <div><dt>Gestão de Incidentes Críticos</dt><dd>Papel de Incident Commander (IC), comunicação de crise, salas de guerra (<em>war rooms</em>) e execução de <em>Blameless Post-Mortems</em> (análise pós-incidente sem culpa) para identificação de causas raízes estruturais.</dd></div>
+                  <div><dt>Engenharia do Caos &amp; Testes de Carga</dt><dd>Simulação de falhas (Chaos Mesh, Pumba), testes de injeção de latência e particionamento de rede; testes de estresse com k6 e Locust.</dd></div>
+                </dl>
+              </div>
+            </section>
+
+            <!-- 2.3 -->
+            <section class="tab-panel" id="panel-23" role="tabpanel" aria-labelledby="tab-23" tabindex="0" data-label="2.3 Analista de Sistemas &amp; Arquitetura de Dados">
+              <h3>2.3 Analista de Sistemas &amp; Arquitetura de Dados Corporativa</h3>
+              <div class="skill-group">
+                <h4>Análise Sistêmica, Requisitos &amp; Governança</h4>
+                <dl class="skill-list">
+                  <div><dt>Engenharia de Requisitos</dt><dd>Levantamento de requisitos funcionais (RF) e não funcionais (RNF), matrizes de rastreabilidade, diagramação UML/C4 Model (Contexto, Contêineres, Componentes).</dd></div>
+                  <div><dt>Gestão de Serviços de TI</dt><dd>Aderência às melhores práticas de ITIL v4 (Gestão de Mudanças, Gestão de Incidentes, Gestão de Problemas e CMDB).</dd></div>
+                  <div><dt>Continuidade de Negócios</dt><dd>Planejamento de Contingência, Disaster Recovery Plan (DRP), definição e garantia de RPO (Recovery Point Objective) e RTO (Recovery Time Objective).</dd></div>
+                </dl>
+              </div>
+              <div class="skill-group">
+                <h4>Bancos de Dados, Tuning &amp; Alta Disponibilidade (DBA / Data Ops)</h4>
+                <dl class="skill-list">
+                  <div><dt>PostgreSQL</dt><dd>Tuning de memória (<code>shared_buffers</code>, <code>work_mem</code>, <code>maintenance_work_mem</code>), otimização de queries com <code>EXPLAIN (ANALYZE, BUFFERS)</code>, estratégias de particionamento declarativo, mitigação de bloat via autovacuum tuning, connection pooling (PgBouncer).</dd></div>
+                  <div><dt>Alta Disponibilidade e Replicação</dt><dd>Configuração de replicação streaming assíncrona e síncrona, failover automatizado com Patroni, etcd e balanceamento de conexões com HAProxy.</dd></div>
+                  <div><dt>Ferramentas de Backup de Dados</dt><dd>WAL-G, Barman, pgBackRest com envio contínuo para S3/Object Storage e recuperação pontual no tempo (PITR - Point-In-Time Recovery).</dd></div>
+                  <div><dt>Bancos NoSQL &amp; In-Memory</dt><dd>Redis (Sentinel para HA, Cluster sharding, políticas de despejo de chaves, persistência AOF/RDB).</dd></div>
+                </dl>
+              </div>
+            </section>
+
+            <!-- 2.4 -->
+            <section class="tab-panel" id="panel-24" role="tabpanel" aria-labelledby="tab-24" tabindex="0" data-label="2.4 Redes, Conectividade &amp; Serviços de Infraestrutura">
+              <h3>2.4 Redes, Conectividade &amp; Serviços de Infraestrutura</h3>
+              <div class="skill-group">
+                <h4>Protocolos, Roteamento &amp; Serviços Core</h4>
+                <dl class="skill-list">
+                  <div><dt>Camada de Rede (TCP/IP)</dt><dd>Diagnóstico profundo de pilha de rede, DNS (BIND9, Unbound, CoreDNS com zonas split-horizon), DHCP, BGP básico, NAT e roteamento estático/dinâmico.</dd></div>
+                  <div><dt>Balanceamento de Carga &amp; Proxy Reverso</dt><dd>Nginx, HAProxy, Envoy, Traefik (técnicas de SSL/TLS termination, HTTP/2, HTTP/3, algoritmos Round-Robin, Least Connections e IP Hash).</dd></div>
+                  <div><dt>Conectividade Segura</dt><dd>VPNs corporativas (WireGuard, OpenVPN, IPsec) com túneis site-to-site e controle de acesso baseado em zero-trust.</dd></div>
+                </dl>
+              </div>
+            </section>
+
+            <!-- 2.5 -->
+            <section class="tab-panel" id="panel-25" role="tabpanel" aria-labelledby="tab-25" tabindex="0" data-label="2.5 Infraestrutura como Código, Containers &amp; CI/CD">
+              <h3>2.5 Infraestrutura como Código (IaC), Containers &amp; CI/CD</h3>
+              <div class="skill-group">
+                <h4>Provisionamento Automatizado &amp; Gerenciamento de Configuração</h4>
+                <dl class="skill-list">
+                  <div><dt>Terraform / OpenTofu</dt><dd>Criação de módulos reutilizáveis, gerenciamento de estado remoto com lock distribuído, drift detection e automação multi-ambiente.</dd></div>
+                  <div><dt>Ansible</dt><dd>Playbooks idempotentes, roles estruturadas, templates Jinja2, inventários dinâmicos e automação de orquestração sem agentes (agentless).</dd></div>
+                </dl>
+              </div>
+              <div class="skill-group">
+                <h4>Contêineres &amp; Orquestração</h4>
+                <dl class="skill-list">
+                  <div><dt>Docker</dt><dd>Isolamento de serviços, compilação multi-stage, otimização de imagens corporativas sem root (rootless), gestão de redes internas bridge/overlay.</dd></div>
+                  <div><dt>Kubernetes (k8s)</dt><dd>Deployments, DaemonSets, StatefulSets, Probes (Liveness, Readiness, Startup), tolerâncias e afinidades, Service Mesh (Istio básico/Linkerd).</dd></div>
+                </dl>
+              </div>
+              <div class="skill-group">
+                <h4>Automação de Pipelines (CI/CD)</h4>
+                <dl class="skill-list">
+                  <div><dt>GitHub Actions / GitLab CI</dt><dd>Esteiras completas com validação de linting de infraestrutura (tflint, ansible-lint), auditoria de segurança (Trivy, SonarQube) e deploy contínuo em ambientes de produção e homologação.</dd></div>
+                </dl>
+              </div>
+            </section>
+
+            <!-- 2.6 IA -->
+            <section class="tab-panel" id="panel-26" role="tabpanel" aria-labelledby="tab-26" tabindex="0" data-label="2.6 IA Aplicada a Operações">
+              <h3>2.6 IA Aplicada a Operações (AIOps, LLMOps &amp; Agentes de IA)</h3>
+              <div class="skill-group">
+                <h4>Agentes de IA para Engenharia de Infraestrutura</h4>
+                <dl class="skill-list">
+                  <div><dt>Codificação &amp; Automação Assistida</dt><dd>Uso de agentes de IA (Antigravity, Claude, GitHub Copilot) para geração e revisão de playbooks Ansible, módulos Terraform, scripts Bash/Python e pipelines CI/CD, com validação obrigatória por linting (<code>ansible-lint</code>, <code>tflint</code>, <code>shellcheck</code>) e revisão humana antes do merge.</dd></div>
+                  <div><dt>Governança de Uso de Agentes</dt><dd>Princípio de mínimo privilégio, execução em ambientes isolados (sandbox/containers), proibição de segredos em prompts e trilha de auditoria completa das alterações via Git.</dd></div>
+                </dl>
+              </div>
+              <div class="skill-group">
+                <h4>Hospedagem &amp; Operação de LLMs Locais (Self-hosted LLM / LLMOps)</h4>
+                <dl class="skill-list">
+                  <div><dt>Runtimes de Inferência</dt><dd>Ollama, vLLM e Open WebUI para servir modelos open-weight on-premises, com API compatível com OpenAI e controle total sobre os dados (aderência à LGPD).</dd></div>
+                  <div><dt>GPU &amp; Capacidade</dt><dd>Drivers NVIDIA, CUDA, NVIDIA Container Toolkit, dimensionamento de VRAM por quantização (GGUF, AWQ), limites de concorrência e filas de requisição.</dd></div>
+                  <div><dt>LLM como Serviço Crítico</dt><dd>Serviços systemd/containers com healthchecks, proxy reverso Nginx com TLS e autenticação, métricas de inferência (tokens/s, latência do primeiro token, uso de VRAM) exportadas para Prometheus/Grafana.</dd></div>
+                </dl>
+              </div>
+              <div class="skill-group">
+                <h4>MLOps — Deploy &amp; Observabilidade de Modelos</h4>
+                <dl class="skill-list">
+                  <div><dt>Empacotamento &amp; Deploy</dt><dd>Imagens Docker multi-stage para serving de modelos, deploy em Kubernetes com requests/limits de GPU, readiness probes condicionadas ao carregamento do modelo e rollouts graduais.</dd></div>
+                  <div><dt>Monitoramento de Inferência</dt><dd>SLIs específicos de IA (latência p95/p99 por requisição, taxa de erro, throughput, saturação de GPU) com SLOs e alertas roteados pelo Alertmanager.</dd></div>
+                </dl>
+              </div>
+              <div class="skill-group">
+                <h4>AIOps — Operações Assistidas por IA</h4>
+                <dl class="skill-list">
+                  <div><dt>Detecção de Anomalias</dt><dd>Complemento de alertas por limiar estático com detecção por desvio estatístico e sazonalidade (PromQL <code>predict_linear</code>, suavização exponencial, z-score), reduzindo ruído e alertas falso-positivos.</dd></div>
+                  <div><dt>Triagem &amp; RCA Assistida</dt><dd>Uso de LLMs para sumarizar logs, correlacionar alertas e rascunhar timelines de Post-Mortem, sempre com validação humana do Incident Commander.</dd></div>
+                </dl>
+              </div>
+              <div class="skill-group">
+                <h4>Bots &amp; Integrações com APIs de IA</h4>
+                <dl class="skill-list">
+                  <div><dt>ChatOps &amp; Automação Conversacional</dt><dd>Bots para Discord e WhatsApp integrados a APIs de LLM (tradução automática, consulta a runbooks, notificação de incidentes), com tratamento de rate limit, retries com backoff exponencial e gestão segura de tokens.</dd></div>
+                </dl>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================ 03 IMPACTO -->
+    <section class="section" id="impacto" aria-labelledby="imp-h" data-corpus>
+      <div class="wrap">
+        <header class="sec-head reveal">
+          <span class="sec-num">§03</span>
+          <h2 id="imp-h">Matriz de resultados quantificáveis</h2>
+          <span class="sec-meta">fórmula STAR · SRE / Ops</span>
+          <p class="sec-intro">O modelo textual a seguir aplica a metodologia STAR com dados numéricos para superar filtros automáticos de triagem e comprovar autoridade em operações.</p>
+        </header>
+
+        <div class="kpis reveal" aria-label="Indicadores-chave">
+          <div class="kpi"><div class="kpi-val">99,98<small>%</small></div><div class="kpi-label">Uptime global (SLO)</div><div class="kpi-from">de 99,2% · <b>downtime −97,5%</b></div></div>
+          <div class="kpi"><div class="kpi-val">3<small>min</small></div><div class="kpi-label">MTTD</div><div class="kpi-from">de 42 min · <b>−92,9%</b></div></div>
+          <div class="kpi"><div class="kpi-val">42<small>ms</small></div><div class="kpi-label">Latência p99</div><div class="kpi-from">de 1.800 ms · <b>15.000 tx simultâneas</b></div></div>
+          <div class="kpi"><div class="kpi-val">35<small>h/sem</small></div><div class="kpi-label">Toil eliminado</div><div class="kpi-from"><b>−85%</b> de trabalho manual</div></div>
+          <div class="kpi"><div class="kpi-val">−70<small>%</small></div><div class="kpi-label">RTO (Recovery Time Objective)</div><div class="kpi-from">RPO <b>&lt; 5 min</b></div></div>
+          <div class="kpi"><div class="kpi-val">120<small>+</small></div><div class="kpi-label">Instâncias Linux gerenciadas</div><div class="kpi-from">Ubuntu / CentOS</div></div>
+          <div class="kpi"><div class="kpi-val">94<small>%</small></div><div class="kpi-label">Incidentes antecipados</div><div class="kpi-from">monitoramento ativo</div></div>
+          <div class="kpi"><div class="kpi-val">0</div><div class="kpi-label">Deadlocks em pico</div><div class="kpi-from">PostgreSQL + kernel tuning</div></div>
+        </div>
+
+        <div class="star-grid">
+          <article class="panel role-card reveal" data-label="Experiência — Analista de Sistemas Pleno / SRE">
+            <header>
+              <h3>Analista de Sistemas Pleno / SRE (Site Reliability Engineer)</h3>
+              <span class="eyebrow"><b>01</b></span>
+            </header>
+            <ul class="star-list">
+              <li><span><strong>Engenharia de Confiabilidade &amp; SLOs:</strong> Implementou arquitetura de observabilidade baseada em Prometheus, Grafana e OpenTelemetry, estabelecendo SLIs/SLOs e políticas de Error Budget que elevaram o uptime global de <span class="num">99,2%</span> para <span class="num">99,98%</span>, reduzindo o MTTD (Mean Time to Detect) de <span class="num">42 minutos</span> para <span class="num">3 minutos</span>.</span></li>
+              <li><span><strong>Tuning de Banco de Dados &amp; Infraestrutura:</strong> Conduziu análise sistêmica e tuning profundo no PostgreSQL e na camada de kernel do Linux, reestruturando particionamento de tabelas e alocação de memória (work_mem/shared_buffers), o que diminuiu a latência p99 de <span class="num">1.800ms</span> para <span class="num">42ms</span> e extinguiu deadlocks em picos de <span class="num">15.000</span> transações simultâneas.</span></li>
+              <li><span><strong>Automação de Operações &amp; Toil Reduction:</strong> Desenvolveu automações com Ansible, Python e Bash para aplicação de patches de segurança e provisioning de ambientes, eliminando mais de <span class="num">35 horas</span> semanais de trabalho manual (redução de <span class="num">85%</span> de toil operacional) com conformidade contínua aos padrões CIS Benchmarks.</span></li>
+              <li><span><strong>Gestão de Incidentes Críticos &amp; Continuidade:</strong> Atuou como Incident Commander na resolução de falhas de alta prioridade (P1/P2), conduzindo Post-Mortems sem culpa e estruturando planos de Disaster Recovery (DRP) com RPO inferior a <span class="num">5 minutos</span> e RTO reduzido em <span class="num">70%</span> com replicação automatizada.</span></li>
+            </ul>
+          </article>
+
+          <article class="panel role-card reveal" data-label="Experiência — Administrador de Sistemas Linux / SysAdmin">
+            <header>
+              <h3>Administrador de Sistemas Linux / SysAdmin</h3>
+              <span class="eyebrow"><b>02</b></span>
+            </header>
+            <ul class="star-list">
+              <li><span><strong>Administração de Servidores &amp; Redes:</strong> Gerenciou parque computacional com mais de <span class="num">120</span> instâncias Linux (Ubuntu/CentOS), implementando balanceamento de carga com HAProxy/Nginx e endurecimento de segurança (Hardening) via SELinux, firewalls nftables e chaves SSH centralizadas.</span></li>
+              <li><span><strong>Contingência e Armazenamento:</strong> Estruturou rotinas de backup corporativo automatizado e snapshots ZFS/LVM integrados a buckets em nuvem, garantindo integridade de dados e conformidade estrita com a política <span class="num">3-2-1</span> de recuperação de desastres.</span></li>
+              <li><span><strong>Monitoramento e Alertas:</strong> Substituiu monitoramento passivo por monitoramento ativo com Zabbix e Grafana, criando triggers personalizadas de disco, memória e throughput de rede, antecipando falhas de hardware e saturação em <span class="num">94%</span> dos incidentes.</span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================ 04 IA -->
+    <section class="section" id="ia" aria-labelledby="ia-h" data-corpus>
+      <div class="wrap">
+        <header class="sec-head reveal">
+          <span class="sec-num">§04</span>
+          <h2 id="ia-h">IA aplicada à engenharia de operações</h2>
+          <span class="sec-meta">AIOps · LLMOps · MLOps</span>
+          <p class="sec-intro">IA tratada como mais um serviço de produção: com SLOs, observabilidade, controle de acesso e um humano responsável por cada decisão.</p>
+        </header>
+
+        <div class="ai-grid">
+          <article class="panel role-card reveal" data-label="Experiência — Engenharia de Operações com IA">
+            <header>
+              <h3>Engenharia de Operações com IA (AIOps / LLMOps)</h3>
+              <span class="eyebrow"><b>03</b></span>
+            </header>
+            <ul class="star-list">
+              <li><span><strong>Infraestrutura de LLMs Self-hosted:</strong> Implantou stack de inferência local com Ollama/vLLM e Open WebUI em servidores Linux com GPU NVIDIA, exposta via Nginx com TLS e autenticação, mantendo dados sensíveis on-premises e instrumentando latência e uso de VRAM no Prometheus/Grafana.</span></li>
+              <li><span><strong>Automação Assistida por Agentes de IA:</strong> Incorporou agentes de IA (Antigravity, Claude, GitHub Copilot) ao fluxo de engenharia de infraestrutura para gerar e revisar playbooks Ansible, módulos Terraform e pipelines GitHub Actions, com gates de qualidade automatizados (ansible-lint, tflint, Trivy) e revisão humana obrigatória.</span></li>
+              <li><span><strong>AIOps &amp; Resposta a Incidentes:</strong> Aplicou detecção de anomalias e sumarização de logs assistida por LLM na triagem de alertas e na redação de Post-Mortems, acelerando a análise de causa raiz (RCA) sem remover o controle humano das decisões.</span></li>
+              <li><span><strong>MLOps &amp; Serving de Modelos:</strong> Empacotou modelos em containers Docker e publicou em Kubernetes com limites de GPU e readiness probes, monitorando latência p95/p99, throughput e saturação de inferência com SLOs dedicados.</span></li>
+              <li><span><strong>Bots &amp; Integrações com APIs de IA:</strong> Desenvolveu bots de tradução e ChatOps integrados a APIs de LLM (Discord/WhatsApp), com tratamento de limites de taxa, reprocessamento com backoff e armazenamento seguro de credenciais.</span></li>
+            </ul>
+          </article>
+
+          <div class="reveal">
+            <div class="panel">
+              <div class="panel-head"><span class="eyebrow">Princípios de operação com IA</span><span class="eyebrow">04</span></div>
+              <ol class="principles">
+                <li><h4><span>01</span>Humano no controle</h4><p>Toda saída de agente passa por revisão e por CI (lint, testes, scan) antes de chegar à produção.</p></li>
+                <li><h4><span>02</span>Dados sensíveis on-premises</h4><p>Modelos locais quando há dado pessoal ou corporativo — aderência à LGPD por arquitetura.</p></li>
+                <li><h4><span>03</span>Observável como qualquer serviço</h4><p>Inferência tem SLI, SLO e alerta: latência do primeiro token, tokens/s, erros e VRAM.</p></li>
+                <li><h4><span>04</span>Mínimo privilégio</h4><p>Agentes rodam em sandbox, sem segredos no prompt e com trilha de auditoria em Git.</p></li>
+              </ol>
+            </div>
+            <p class="ai-note"><strong>IA neste site →</strong> o Job Matcher (§06) e o comando <code>ask</code> do terminal (§07) usam um modelo de embeddings multilíngue executado <em>no seu navegador</em>. Nenhum texto é enviado a servidores.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================ 05 REPOSITÓRIOS -->
+    <section class="section" id="repositorios" aria-labelledby="repo-h" data-corpus data-label="Mapeamento de repositórios do GitHub">
+      <div class="wrap">
+        <header class="sec-head reveal">
+          <span class="sec-num">§05</span>
+          <h2 id="repo-h">Mapeamento de repositórios do GitHub</h2>
+          <span class="sec-meta"><a href="https://github.com/LeinadSaia" target="_blank" rel="noopener">@LeinadSaia ↗</a></span>
+          <p class="sec-intro">Mapeamento direto dos projetos do GitHub para as competências requeridas pelos sistemas ATS e gestores técnicos de infraestrutura.</p>
+        </header>
+        <div class="table-scroll reveal">
+          <table class="repo">
+            <thead>
+              <tr><th scope="col">Tipo de Projeto / Tema</th><th scope="col">Foco de Engenharia</th><th scope="col">Stack Tecnológica</th><th scope="col">Palavras-Chave ATS</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Automação &amp; Gerenciamento de Configuração</td><td>Playbooks idempotentes de hardening e provisionamento</td><td>Ansible, Bash, Jinja2, Linux</td><td><div class="chips"><span class="chip">Ansible</span><span class="chip">Idempotency</span><span class="chip">Configuration Management</span><span class="chip">Linux Hardening</span><span class="chip">Toil Reduction</span></div></td></tr>
+              <tr><td>Observabilidade &amp; Telemetria</td><td>Painéis analíticos, monitoramento sintético e alertas</td><td>Prometheus, Grafana, PromQL, Alertmanager</td><td><div class="chips"><span class="chip">Prometheus</span><span class="chip">Grafana</span><span class="chip">Observability</span><span class="chip">SLO</span><span class="chip">SLI</span><span class="chip">Alerting</span><span class="chip">Golden Signals</span></div></td></tr>
+              <tr><td>Infraestrutura como Código &amp; Nuvem</td><td>Provisionamento declarativo e arquitetura tolerante a falhas</td><td>Terraform, AWS (VPC, EC2, RDS), OpenTofu</td><td><div class="chips"><span class="chip">IaC</span><span class="chip">Terraform</span><span class="chip">Cloud Infrastructure</span><span class="chip">AWS</span><span class="chip">Disaster Recovery</span><span class="chip">High Availability</span></div></td></tr>
+              <tr><td>Alta Disponibilidade &amp; Bancos de Dados</td><td>Clustering, replicação streaming e balanceamento</td><td>PostgreSQL, Redis, HAProxy, Patroni</td><td><div class="chips"><span class="chip">PostgreSQL DBA</span><span class="chip">Query Tuning</span><span class="chip">High Availability</span><span class="chip">Replication</span><span class="chip">Connection Pooling</span></div></td></tr>
+              <tr><td>Containers &amp; Scripting de Diagnóstico</td><td>Ferramentas de análise de rede e métricas em tempo real</td><td>Docker, Python, Bash, Linux Kernel tools</td><td><div class="chips"><span class="chip">Docker</span><span class="chip">Linux SysAdmin</span><span class="chip">Troubleshooting</span><span class="chip">Bash Scripting</span><span class="chip">Performance Tuning</span></div></td></tr>
+              <tr class="row-ai"><td>IA Aplicada, LLMOps &amp; Bots</td><td>Bots de tradução/ChatOps com APIs de LLM e stack de inferência local observável</td><td>JavaScript, Node.js, Ollama, vLLM, Docker, NVIDIA CUDA</td><td><div class="chips"><span class="chip ai">LLM</span><span class="chip ai">LLMOps</span><span class="chip ai">AIOps</span><span class="chip ai">MLOps</span><span class="chip ai">Ollama</span><span class="chip ai">ChatOps</span><span class="chip ai">API Integration</span></div></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="repo-foot reveal">
+          <span>6 trilhas · 36 palavras-chave mapeadas</span>
+          <a class="btn btn-sm" href="https://github.com/LeinadSaia?tab=repositories" target="_blank" rel="noopener" id="repo-link">Ver repositórios no GitHub ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- corpus:end -->
+
+    <!-- ================================================================ 06 AUDITOR ATS -->
+    <section class="section" id="auditor" aria-labelledby="ats-h">
+      <div class="wrap">
+        <header class="sec-head reveal">
+          <span class="sec-num">§06</span>
+          <h2 id="ats-h">Auditor ATS &amp; Job Matcher</h2>
+          <span class="sec-meta">dicionário canônico · 45 + 19 termos IA</span>
+          <p class="sec-intro">Cole a descrição de uma vaga de SRE, SysAdmin ou Analista de Sistemas. O motor extrai os requisitos e os compara, termo a termo, com o conteúdo desta página — o mesmo algoritmo roda no pipeline de CI.</p>
+        </header>
+
+        <div class="ats-grid">
+          <div class="reveal">
+            <div class="panel">
+              <div class="panel-head"><span class="eyebrow">Auditoria do dossiê</span><span class="eyebrow" id="audit-count">—</span></div>
+              <div class="panel-body" style="padding-top:16px">
+                <div class="audit-score"><span class="big" id="audit-score">—</span><span class="dim mono" style="font-size:12px">cobertura do dicionário canônico</span></div>
+                <div class="audit-legend"><span class="l-ok">canônico presente</span><span class="l-ai">extensão IA</span><span class="l-off">ausente</span></div>
+                <div class="chips" id="audit-chips" aria-live="polite"></div>
+              </div>
+            </div>
+            <h3 class="eyebrow" style="margin:28px 0 10px">Algoritmo (seção 5.2)</h3>
+            <pre class="formula" aria-label="Fórmula do Match Ratio">Match Ratio = min(100, (Σ termos identificados
+               ÷ max(1, Σ requisitos da vaga)) × 100
+               + <span class="v">bônus de sênior (5%)</span>)</pre>
+            <p class="hint" style="margin-top:10px">Bônus: Disaster Recovery · Error Budget · Tuning · Hardening</p>
+          </div>
+
+          <div class="matcher reveal">
+            <label for="job-input" class="eyebrow" style="display:block;margin-bottom:10px">Descrição da vaga</label>
+            <textarea id="job-input" spellcheck="false" placeholder="Cole aqui os requisitos da vaga…&#10;&#10;Ex.: Experiência com Linux, Kubernetes, Terraform, Prometheus/Grafana, SLO e error budget, PostgreSQL…"></textarea>
+            <div class="matcher-actions">
+              <button class="btn btn-primary" id="btn-match" type="button">Analisar compatibilidade <span class="k">Ctrl ↵</span></button>
+              <button class="btn" id="btn-sample" type="button">Carregar vaga de exemplo</button>
+              <span class="spacer"></span>
+              <button class="btn btn-sm" id="btn-clear" type="button">Limpar</button>
+            </div>
+
+            <div class="result" id="match-result" hidden aria-live="polite">
+              <div class="gauge">
+                <svg viewBox="0 0 120 120" aria-hidden="true">
+                  <circle class="track" cx="60" cy="60" r="52" fill="none" stroke-width="6"/>
+                  <circle class="fill" id="gauge-fill" cx="60" cy="60" r="52" fill="none" stroke-width="6" stroke-dasharray="326.73" stroke-dashoffset="326.73"/>
+                  <circle class="ticks-ring" cx="60" cy="60" r="44" fill="none" stroke-width="1" stroke-dasharray="1 5.9"/>
+                </svg>
+                <div class="gauge-label"><b id="gauge-val">0</b><span>match ratio</span></div>
+              </div>
+              <div class="breakdown">
+                <dl>
+                  <div><dt>Requisitos</dt><dd id="r-req">0</dd></div>
+                  <div><dt>Identificados</dt><dd id="r-hit">0</dd></div>
+                  <div><dt>Bônus</dt><dd id="r-bonus">0</dd></div>
+                </dl>
+                <p class="calc" id="r-calc"></p>
+                <h4>Comprovados no dossiê</h4>
+                <div class="chips" id="r-hits"></div>
+                <h4>Lacunas</h4>
+                <div class="chips" id="r-miss"></div>
+              </div>
+            </div>
+
+            <div class="semantic" id="semantic">
+              <div class="semantic-head">
+                <div>
+                  <h3>Camada semântica <span class="chip ai">IA no navegador</span></h3>
+                  <p>Além das palavras exatas, compara o <em>sentido</em> de cada requisito com as evidências do dossiê usando embeddings multilíngues (<span class="mono">paraphrase-multilingual-MiniLM-L12-v2</span>). Download único de ~120&nbsp;MB, depois fica em cache.</p>
+                </div>
+                <button class="btn" id="btn-semantic" type="button">Ativar camada semântica</button>
+              </div>
+              <div class="progress" id="sem-progress" hidden><span></span></div>
+              <div class="semantic-status" id="sem-status" aria-live="polite"></div>
+              <div id="sem-results"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================ 07 TERMINAL -->
+    <section class="section" id="terminal" aria-labelledby="term-h">
+      <div class="wrap">
+        <header class="sec-head reveal">
+          <span class="sec-num">§07</span>
+          <h2 id="term-h">Terminal de auditoria</h2>
+          <span class="sec-meta">pressione <kbd>/</kbd> para focar</span>
+          <p class="sec-intro">Navegue pelo dossiê como em um servidor. Digite <code>help</code> para ver os comandos ou <code>ask</code> seguido de uma pergunta em linguagem natural.</p>
+        </header>
+        <div class="terminal reveal">
+          <div class="term-bar">
+            <span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="title"><b>daniel@sre-hub</b>: ~ — bash</span>
+            <span id="term-mode">bm25</span>
+          </div>
+          <div class="term-out" id="term-out" role="log" aria-live="polite" aria-label="Saída do terminal"></div>
+          <form class="term-in" id="term-form" autocomplete="off">
+            <label for="term-input">daniel@sre-hub:~$</label>
+            <input id="term-input" type="text" spellcheck="false" autocapitalize="off" aria-label="Comando">
+          </form>
+        </div>
+        <div class="term-hints reveal" aria-label="Comandos sugeridos">
+          <button type="button" data-cmd="whoami">whoami</button>
+          <button type="button" data-cmd="skills 2.2">skills 2.2</button>
+          <button type="button" data-cmd="slo">slo</button>
+          <button type="button" data-cmd="ask como você reduz o MTTD?">ask como você reduz o MTTD?</button>
+          <button type="button" data-cmd="ask experiência com LLM em GPU">ask experiência com LLM em GPU</button>
+          <button type="button" data-cmd="ats">ats</button>
+          <button type="button" data-cmd="neofetch">neofetch</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================ 08 ARQUITETURA & EXPORTAÇÃO -->
+    <section class="section" id="arquitetura" aria-labelledby="arq-h">
+      <div class="wrap">
+        <header class="sec-head reveal">
+          <span class="sec-num">§08</span>
+          <h2 id="arq-h">Arquitetura do hub &amp; exportação</h2>
+          <span class="sec-meta">GitHub Pages · Actions</span>
+          <p class="sec-intro">Hub técnico focado no tripé Análise de Sistemas + SRE + SysAdmin, agora com uma terceira camada de IA aplicada a operações. Cada formato de saída é gerado a partir da mesma fonte.</p>
+        </header>
+
+        <div class="arch reveal" aria-label="Diagrama de arquitetura">
+          <div class="panel ticks arch-root">
+            <span class="eyebrow">Repositório GitHub (Pages / CI)</span>
+            <strong>LeinadSaia.github.io</strong>
+          </div>
+          <div class="arch-stem" aria-hidden="true"></div>
+          <div class="arch-layers">
+            <div class="panel arch-layer">
+              <span class="eyebrow"><b>Camada 1</b></span>
+              <h3>Dossiê ATS Puro</h3>
+              <ul><li>Keywords canônicas de SRE/Ops</li><li>Títulos semânticos universais</li><li>Equilíbrio Acrônimo / Extenso</li><li>Exportador de texto plano</li></ul>
+            </div>
+            <div class="panel arch-layer">
+              <span class="eyebrow"><b>Camada 2</b></span>
+              <h3>Engenharia de SRE</h3>
+              <ul><li>SLAs, SLOs, SLIs e Error Budgets</li><li>Automação (Ansible/Bash/IaC)</li><li>Kernel Linux &amp; Troubleshooting</li><li>Mapeamento Sistêmico &amp; Causa</li></ul>
+            </div>
+            <div class="panel arch-layer is-ai">
+              <span class="eyebrow"><b>Camada 3</b></span>
+              <h3>IA Aplicada a Operações</h3>
+              <ul><li>LLMs self-hosted (Ollama / vLLM)</li><li>AIOps: anomalias &amp; triagem</li><li>Agentes com revisão humana</li><li>Matcher semântico no navegador</li></ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="export-grid">
+          <article class="panel export-card reveal">
+            <span class="eyebrow">PDF · impressão</span>
+            <span class="file">cv-daniel-saia-sre.pdf</span>
+            <p>Versão impressa gerada sem colunas quebra-parser: uma coluna, texto selecionável, títulos semânticos.</p>
+            <div class="btns"><a class="btn btn-sm btn-primary" href="cv-daniel-saia-sre.pdf" download id="dl-pdf">Baixar PDF</a><a class="btn btn-sm" href="cv.html" target="_blank" rel="noopener" id="open-cv">Ver HTML</a></div>
+          </article>
+          <article class="panel export-card reveal">
+            <span class="eyebrow">Texto puro · Gupy · Workday · Taleo</span>
+            <span class="file">resume-plain.txt</span>
+            <p>Modelo 100% texto puro para colar integralmente em campos de formulário das plataformas de recrutamento.</p>
+            <div class="btns"><button class="btn btn-sm btn-primary" type="button" id="copy-plain">Copiar texto</button><a class="btn btn-sm" href="resume-plain.txt" download id="dl-plain">Baixar .txt</a></div>
+          </article>
+          <article class="panel export-card reveal">
+            <span class="eyebrow">Código-fonte · CI/CD</span>
+            <span class="file">.github/workflows/deploy.yml</span>
+            <p>Validação de HTML e auditoria ATS no pipeline, geração do PDF e deploy contínuo nativo do GitHub Pages.</p>
+            <div class="btns"><a class="btn btn-sm" href="https://github.com/LeinadSaia/leinadsaia.github.io" target="_blank" rel="noopener" id="open-repo">Ver repositório ↗</a></div>
+          </article>
+        </div>
+
+        <details class="plain-preview reveal" id="plain-details">
+          <summary>Pré-visualizar resume-plain.txt</summary>
+          <pre id="plain-pre">Carregando…</pre>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================================================================ FOOTER -->
+  <footer class="footer">
+    <div class="wrap footer-grid">
+      <div>
+        <p class="eyebrow" style="margin:0 0 14px">Vamos conversar</p>
+        <h2><a href="mailto:danielenescunha2@gmail.com">danielenescunha2<span class="dim">@gmail.com</span></a></h2>
+      </div>
+      <div class="footer-meta">
+        <a href="https://github.com/LeinadSaia" target="_blank" rel="noopener">github.com/LeinadSaia</a><br>
+        HTML · CSS · JS sem frameworks<br>
+        deploy: GitHub Actions → Pages<br>
+        <span id="build-info">rev. 2026.10</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script type="module" src="assets/js/main.js"></script>
+</body>
+</html>

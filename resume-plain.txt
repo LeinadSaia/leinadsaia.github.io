@@ -1,0 +1,40 @@
+DANIEL SAIA
+Analista de Sistemas Pleno | Site Reliability Engineer (SRE) | SysAdmin Linux
+
+Email: danielenescunha2@gmail.com
+GitHub: https://github.com/LeinadSaia
+Base: Brasil - Remoto
+
+=== RESUMO PROFISSIONAL ===
+Profissional especializado em Engenharia de Confiabilidade de Sistemas (SRE), Administração de Sistemas Linux (SysAdmin) e Análise de Sistemas Corporativos. Ampla experiência na gestão e sustentação de infraestruturas críticas, com foco em alta disponibilidade, observabilidade profunda e erradicação de trabalho manual repetitivo (Toil Reduction) por meio de automação com Ansible, Bash, Python e Terraform. Histórico comprovado de elevação de SLAs/SLOs para 99,98%, tuning avançado de bancos de dados PostgreSQL e kernel Linux, e atuação como Incident Commander em operações de missão crítica.
+
+=== COMPETÊNCIAS TÉCNICAS ===
+- SysAdmin & SO: Linux (Ubuntu, RHEL), Kernel Tuning, Systemd, LVM, ZFS, Hardening (CIS).
+- SRE & Observabilidade: Prometheus, Grafana, OpenTelemetry, ELK Stack, SLI/SLO, Incident Management.
+- Análise & Dados: PostgreSQL (Tuning, Patroni, HAProxy), Redis, DRP (Disaster Recovery).
+- Redes: TCP/IP, DNS, VPNs (WireGuard), Load Balancers (Nginx, HAProxy, Envoy).
+- IaC & CI/CD: Terraform, Ansible, Docker, Kubernetes, GitHub Actions, GitLab CI.
+- IA em Operações: LLMs Self-Hosted (Ollama/vLLM), MLOps, AIOps, Inferência Local com GPU.
+
+=== EXPERIÊNCIA PROFISSIONAL ===
+
+Analista de Sistemas Pleno / SRE (Site Reliability Engineer)
+- Implementou arquitetura de observabilidade baseada em Prometheus, Grafana e OpenTelemetry, estabelecendo SLIs/SLOs e políticas de Error Budget. Elevou o uptime de 99,2% para 99,98% e reduziu MTTD de 42 para 3 minutos.
+- Conduziu análise sistêmica e tuning profundo no PostgreSQL e kernel Linux. Diminuiu latência p99 de 1.800ms para 42ms em picos de 15.000 transações simultâneas.
+- Desenvolveu automações com Ansible, Python e Bash eliminando 35h semanais de trabalho manual (redução de 85% do toil operacional).
+- Atuou como Incident Commander, estruturando DRP com RPO < 5 minutos e RTO -70%.
+
+Administrador de Sistemas Linux / SysAdmin
+- Gerenciou parque com mais de 120 instâncias Linux (Ubuntu/CentOS), implementando balanceamento de carga e hardening via SELinux e nftables.
+- Estruturou rotinas de backup automatizado e snapshots ZFS/LVM, garantindo política 3-2-1.
+- Substituiu monitoramento passivo por ativo com Zabbix e Grafana, antecipando falhas em 94% dos incidentes.
+
+Engenharia de Operações com IA (AIOps / LLMOps)
+- Implantou stack de inferência local com Ollama/vLLM (LGPD compliance) e monitoramento via Prometheus.
+- Integrou agentes de IA (Antigravity, Claude, Copilot) no pipeline de IaC com revisão humana obrigatória.
+- Aplicou detecção de anomalias e sumarização de logs por LLM, acelerando o RCA (Root Cause Analysis).
+
+=== FORMAÇÃO ACADÊMICA E CERTIFICAÇÕES ===
+- Graduação em Análise e Desenvolvimento de Sistemas (Em andamento)
+- Conhecimentos aplicados equivalentes: LPIC-2 / RHCSA, SRE Foundation, ITIL v4.
+- Projetos de sustentabilidade/gerenciamento: SchoolTag.

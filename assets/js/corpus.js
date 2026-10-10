@@ -2,7 +2,14 @@
  * corpus.js — Extrai o corpus do dossiê diretamente do DOM (fonte única de verdade)
  * e fornece recuperação lexical BM25 para o comando `ask` do terminal.
  */
-import { normalize } from './ats-core.js';
+export function normalize(text) {
+  return String(text || '')
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[\u2010-\u2015]/g, '-')
+    .replace(/\s+/g, ' ');
+}
 
 const clean = (s) => String(s || '').replace(/\s+/g, ' ').trim();
 

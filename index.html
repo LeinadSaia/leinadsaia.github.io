@@ -85,9 +85,9 @@
           </ul>
           <p class="lede"><strong>Foco de Atuação:</strong> Confiabilidade de Sistemas, Engenharia de Infraestrutura Linux, Automação de Operações (No-Ops/Toil Reduction), Análise Sistêmica e Observabilidade Distribuída.</p>
           <div class="cta-row">
-            <a class="btn btn-primary" id="cta-pdf" href="cv-daniel-saia-sre.pdf" download>
+            <a class="btn btn-primary" id="cta-pdf" href="#" onclick="window.print(); return false;">
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 2v8m0 0 3-3m-3 3L5 7M3 13h10"/></svg>
-              Baixar CV (PDF)
+              Salvar como PDF
             </a>
             <a class="btn" id="cta-plain" href="resume-plain.txt">
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 2h5l3 3v9H4zM9 2v3h3M6 8h4M6 10.5h4"/></svg>
@@ -442,32 +442,19 @@
     </section>
 
     <!-- ================================================================ 05 REPOSITÓRIOS -->
-    <section class="section" id="repositorios" aria-labelledby="repo-h" data-corpus data-label="Mapeamento de repositórios do GitHub">
+    <section class="section" id="repositorios" aria-labelledby="repo-h" data-corpus data-label="Repositórios Públicos do GitHub">
       <div class="wrap">
         <header class="sec-head reveal">
           <span class="sec-num">§05</span>
-          <h2 id="repo-h">Mapeamento de repositórios do GitHub</h2>
+          <h2 id="repo-h">Repositórios Públicos</h2>
           <span class="sec-meta"><a href="https://github.com/LeinadSaia" target="_blank" rel="noopener">@LeinadSaia ↗</a></span>
-          <p class="sec-intro">Mapeamento direto dos projetos do GitHub para as competências requeridas pelos sistemas ATS e gestores técnicos de infraestrutura.</p>
+          <p class="sec-intro">Principais projetos open source e experimentações técnicas hospedados no GitHub.</p>
         </header>
-        <div class="table-scroll reveal">
-          <table class="repo">
-            <thead>
-              <tr><th scope="col">Tipo de Projeto / Tema</th><th scope="col">Foco de Engenharia</th><th scope="col">Stack Tecnológica</th><th scope="col">Palavras-Chave ATS</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Automação &amp; Gerenciamento de Configuração</td><td>Playbooks idempotentes de hardening e provisionamento</td><td>Ansible, Bash, Jinja2, Linux</td><td><div class="chips"><span class="chip">Ansible</span><span class="chip">Idempotency</span><span class="chip">Configuration Management</span><span class="chip">Linux Hardening</span><span class="chip">Toil Reduction</span></div></td></tr>
-              <tr><td>Observabilidade &amp; Telemetria</td><td>Painéis analíticos, monitoramento sintético e alertas</td><td>Prometheus, Grafana, PromQL, Alertmanager</td><td><div class="chips"><span class="chip">Prometheus</span><span class="chip">Grafana</span><span class="chip">Observability</span><span class="chip">SLO</span><span class="chip">SLI</span><span class="chip">Alerting</span><span class="chip">Golden Signals</span></div></td></tr>
-              <tr><td>Infraestrutura como Código &amp; Nuvem</td><td>Provisionamento declarativo e arquitetura tolerante a falhas</td><td>Terraform, AWS (VPC, EC2, RDS), OpenTofu</td><td><div class="chips"><span class="chip">IaC</span><span class="chip">Terraform</span><span class="chip">Cloud Infrastructure</span><span class="chip">AWS</span><span class="chip">Disaster Recovery</span><span class="chip">High Availability</span></div></td></tr>
-              <tr><td>Alta Disponibilidade &amp; Bancos de Dados</td><td>Clustering, replicação streaming e balanceamento</td><td>PostgreSQL, Redis, HAProxy, Patroni</td><td><div class="chips"><span class="chip">PostgreSQL DBA</span><span class="chip">Query Tuning</span><span class="chip">High Availability</span><span class="chip">Replication</span><span class="chip">Connection Pooling</span></div></td></tr>
-              <tr><td>Containers &amp; Scripting de Diagnóstico</td><td>Ferramentas de análise de rede e métricas em tempo real</td><td>Docker, Python, Bash, Linux Kernel tools</td><td><div class="chips"><span class="chip">Docker</span><span class="chip">Linux SysAdmin</span><span class="chip">Troubleshooting</span><span class="chip">Bash Scripting</span><span class="chip">Performance Tuning</span></div></td></tr>
-              <tr class="row-ai"><td>IA Aplicada, LLMOps &amp; Bots</td><td>Bots de tradução/ChatOps com APIs de LLM e stack de inferência local observável</td><td>JavaScript, Node.js, Ollama, vLLM, Docker, NVIDIA CUDA</td><td><div class="chips"><span class="chip ai">LLM</span><span class="chip ai">LLMOps</span><span class="chip ai">AIOps</span><span class="chip ai">MLOps</span><span class="chip ai">Ollama</span><span class="chip ai">ChatOps</span><span class="chip ai">API Integration</span></div></td></tr>
-            </tbody>
-          </table>
+        <div id="gh-repos" class="repo-grid reveal">
+          <div class="loader" style="color: var(--ink-4); padding: 40px 0; text-align: center; font-family: var(--f-mono);">Buscando repositórios no GitHub...</div>
         </div>
-        <div class="repo-foot reveal">
-          <span>6 trilhas · 36 palavras-chave mapeadas</span>
-          <a class="btn btn-sm" href="https://github.com/LeinadSaia?tab=repositories" target="_blank" rel="noopener" id="repo-link">Ver repositórios no GitHub ↗</a>
+        <div class="repo-foot reveal" style="margin-top: 32px; text-align: center;">
+          <a class="btn btn-sm" href="https://github.com/LeinadSaia?tab=repositories" target="_blank" rel="noopener" id="repo-link">Ver todos no GitHub ↗</a>
         </div>
       </div>
     </section>

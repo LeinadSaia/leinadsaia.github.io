@@ -143,12 +143,25 @@ export function initTerminal({ onScrollTo } = {}) {
     repos: {
       desc: 'mapeamento de repositórios GitHub',
       run() {
-        document.querySelectorAll('table.repo tbody tr').forEach((tr) => {
-          const [a, , c] = [...tr.cells].map((td) => clean(td.textContent));
-          print(`  <span class="ok">▸</span> ${esc(pad(a, 46))}<span class="d">${esc(c)}</span>`);
-        });
+        const cards = document.querySelectorAll('.repo-card');
+        if (!cards.length) {
+          print('  <span class="d">Nenhum repositório carregado no momento.</span>');
+        } else {
+          cards.forEach((card) => {
+            const name = card.querySelector('h3').textContent;
+            const desc = card.querySelector('p').textContent;
+            print(`  <span class="ok">▸</span> ${esc(pad(name, 25))}<span class="d">${esc(desc)}</span>`);
+          });
+        }
         blank();
         print('  <a href="https://github.com/LeinadSaia" target="_blank" rel="noopener">https://github.com/LeinadSaia</a>');
+      },
+    },
+    pdf: {
+      desc: 'salvar dossiê como PDF (abre o assistente de impressão)',
+      run() {
+        print('  <span class="ok">Iniciando geração de PDF...</span>');
+        setTimeout(() => window.print(), 500);
       },
     },
 

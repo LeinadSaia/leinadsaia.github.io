@@ -126,6 +126,33 @@ const init = () => {
       t.classList.remove('show');
     }, 3000);
   };
+  // 8. Fetch GitHub Repositories
+  async function loadGitHubRepos() {
+    const container = document.getElementById('gh-repos');
+    if (!container) return;
+    try {
+      const res = await fetch('https://api.github.com/users/LeinadSaia/repos?type=public&sort=updated&per_page=6');
+      if (!res.ok) throw new Error('API Error');
+      const repos = await res.json();
+      container.innerHTML = repos.filter(r => !r.fork).map(repo => `
+        <a class="repo-card" href="${repo.html_url}" target="_blank" rel="noopener">
+          <div class="repo-top">
+            <h3>${repo.name}</h3>
+            ${repo.language ? `<span class="lang-dot ${repo.language.toLowerCase()}"></span><span class="lang">${repo.language}</span>` : ''}
+          </div>
+          <p>${repo.description || 'Repositório público (sem descrição).'}</p>
+          <div class="repo-stats">
+            <span><svg aria-hidden="true" viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"></path></svg> ${repo.stargazers_count}</span>
+            <span><svg aria-hidden="true" viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M5 5.372v.878c0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75v-.878a2.25 2.25 0 1 1 1.5 0v.878a2.25 2.25 0 0 1-2.25 2.25h-1.5v2.128a2.251 2.251 0 1 1-1.5 0V8.5h-1.5A2.25 2.25 0 0 1 3 6.25v-.878a2.25 2.25 0 1 1 1.5 0ZM5 3.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Zm6.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm-3 8.75a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z"></path></svg> ${repo.forks_count}</span>
+          </div>
+        </a>
+      `).join('');
+    } catch (err) {
+      container.innerHTML = '<p style="color: var(--bad); grid-column: 1/-1;">Não foi possível carregar os repositórios no momento. Verifique minha conta no GitHub.</p>';
+    }
+  }
+
+  loadGitHubRepos();
 };
 
 if (document.readyState === 'loading') {

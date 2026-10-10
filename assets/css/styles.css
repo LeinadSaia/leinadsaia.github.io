@@ -337,7 +337,7 @@ h4 { font: 600 15px/1.35 var(--f-sans); margin: 0; }
    §01 Perfil
    ========================================================================== */
 .profile-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(32px, 5vw, 72px); }
-.summary { margin: 0; font: 400 clamp(18px, 1.9vw, 22px)/1.55 var(--f-sans); color: var(--ink); letter-spacing: -0.005em; }
+.summary { margin: 0; font: 400 clamp(18px, 1.9vw, 22px)/1.55 var(--f-sans); color: var(--ink); letter-spacing: -0.005em; text-align: justify; }
 .summary::first-letter { color: var(--accent); }
 
 .stack-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
@@ -348,9 +348,9 @@ h4 { font: 600 15px/1.35 var(--f-sans); margin: 0; }
 /* ==========================================================================
    §02 Competências — tabs verticais
    ========================================================================== */
-.skills { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: start; }
+.skills { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); }
 
-.tablist { position: sticky; top: calc(var(--topbar-h) + 24px); display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+.tablist { align-self: start; position: sticky; top: calc(var(--topbar-h) + 24px); display: flex; flex-direction: column; border-top: 1px solid var(--line); }
 .tab {
   display: grid; grid-template-columns: 38px 1fr auto; align-items: baseline; gap: 8px;
   width: 100%; padding: 14px 12px 14px 0; text-align: left;

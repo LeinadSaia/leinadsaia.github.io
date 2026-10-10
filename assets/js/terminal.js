@@ -60,7 +60,7 @@ export function initTerminal({ onScrollTo } = {}) {
     whoami: {
       desc: 'identificação e foco de atuação',
       run() {
-        print('<span class="h">Daniel Saia</span> <span class="d">(@LeinadSaia)</span>');
+        print('<span class="h">Daniel Aiás</span> <span class="d">(@LeinadSaia)</span>');
         text('Analista de Sistemas Pleno | Site Reliability Engineer (SRE) | SysAdmin Linux');
         text('Localização: Brasil | Modelo de Trabalho: Remoto / Híbrido / Presencial', 'd');
         blank();
@@ -375,7 +375,7 @@ export function initTerminal({ onScrollTo } = {}) {
   });
 
   /* ------------------------------------------------------------ boot */
-  print('<span class="h">SRE Hub</span> <span class="d">rev. 2026.10 — dossiê técnico de Daniel Saia</span>');
+  print('<span class="h">SRE Hub</span> <span class="d">rev. 2026.10 — dossiê técnico de Daniel Aiás</span>');
   print('<span class="d">Digite</span> <span class="ok">help</span> <span class="d">para listar comandos ·</span> <span class="ok">ask</span> <span class="d">para perguntar em linguagem natural</span>');
   blank();
 

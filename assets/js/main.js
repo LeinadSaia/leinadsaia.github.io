@@ -30,7 +30,22 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(updateClock, 60000); // update every minute
   }
 
-  // 2. Terminal Initialization
+  // 2. Intersection Observer for Scroll Animations (.reveal & .kpis)
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        // Se for um item de KPI com barra, animamos também
+        const bars = entry.target.querySelectorAll('.bar');
+        bars.forEach(b => b.parentElement.classList.add('is-visible'));
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // 3. Terminal Initialization
   initTerminal({
     onScrollTo: (id) => {
       const el = document.getElementById(id);

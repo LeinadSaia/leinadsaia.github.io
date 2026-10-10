@@ -16,7 +16,7 @@ Requisitos:
 - Experiência com containers Docker e noções de orquestração Kubernetes.
 - Desejável experiência com modelos de IA locais (Ollama, vLLM) e AIOps.`;
 
-document.addEventListener('DOMContentLoaded', () => {
+const init = () => {
   // 1. Clock Updates (Status)
   const clockEl = document.getElementById('clock');
   if (clockEl) {
@@ -269,7 +269,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 6. Plain Text Exporter Utils
+  // 6. Tabs (Competências)
+  const tablist = document.querySelector('.tablist');
+  const tabs = document.querySelectorAll('.tab');
+  const panels = document.querySelectorAll('.tab-panel');
+
+  if (tablist) {
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => {
+          t.setAttribute('aria-selected', 'false');
+          t.setAttribute('tabindex', '-1');
+        });
+        panels.forEach(p => p.hidden = true);
+        
+        tab.setAttribute('aria-selected', 'true');
+        tab.setAttribute('tabindex', '0');
+        const panelId = tab.getAttribute('aria-controls');
+        const panel = document.getElementById(panelId);
+        if (panel) panel.hidden = false;
+      });
+    });
+  }
+
+  // 7. Plain Text Exporter Utils
   const copyPlain = document.getElementById('copy-plain');
   copyPlain?.addEventListener('click', async () => {
     try {
@@ -319,4 +342,10 @@ document.addEventListener('DOMContentLoaded', () => {
       t.classList.remove('show');
     }, 3000);
   };
-});
+};
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
